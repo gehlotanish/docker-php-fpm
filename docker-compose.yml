@@ -1,0 +1,21 @@
+version: '2.0'
+services:
+ web:
+    image: nginx:latest
+    ports:
+        - "80:80"
+    volumes:
+        - ./version1:/version1
+        - ./version2:/v2
+        - ./nginx:/etc/nginx/conf.d:rw
+    links:
+        - php
+        - php2
+ php:
+    image: php:7-fpm
+    volumes:
+        - ./version1:/version1
+ php2:
+    image: php:7-fpm
+    volumes:
+        - ./version2:/code
