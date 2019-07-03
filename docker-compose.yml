@@ -1,21 +1,56 @@
-version: '2.0'
+version: '3.0'
 services:
  web:
     image: nginx:latest
     ports:
         - "80:80"
+        - "443:443"
     volumes:
-        - ./version1:/version1
-        - ./version2:/v2
-        - ./nginx:/etc/nginx/conf.d:rw
+        - ./version1:/version1:rw
+        - ./version2:/v2:rw
+        - ./config/nginx:/etc/nginx/conf.d:rw
+        - ./logs/nginx:/var/log/nginx:rw
+        - ./config/ssl:/etc/nginx/ssl:rw
     links:
-        - php
-        - php2
+        - php:php
+        - php2:php2
+        - mysql:mysql
+    restart: 'always'
+ mysql:
+    image: mysql:5.7
+    container_name: 'mysql'
+    restart: 'always'
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./logs/mysql:/var/log/mysql
+    env_file:
+      - .env
+    command: mysqld --max_allowed_packet=128M
+ phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: 'phpmyadmin'
+    links:
+      - mysql:mysql
+    env_file:
+      - .env
+    ports:
+      - '8000:80'
+ redis:
+    container_name: 'redis'
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    
  php:
     image: php:7-fpm
     volumes:
         - ./version1:/version1
+    links:
+        - mysql:mysql
+
  php2:
-    image: php:7-fpm
+    image: php:7.2-fpm
     volumes:
-        - ./version2:/code
+        - ./version2:/v2
+    links:
+        - mysql:mysql
