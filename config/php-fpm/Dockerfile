@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:5.6-fpm
 
 
 RUN apt-get -y update --fix-missing
@@ -13,16 +13,12 @@ RUN apt-get -y install --fix-missing apt-utils build-essential htop git curl lib
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-
 # Install xdebug
-RUN pecl install xdebug-2.7.1
+RUN pecl install xdebug-2.5.5
 RUN docker-php-ext-enable xdebug
 
-# Install redis
-RUN pecl install redis-4.0.1
-RUN docker-php-ext-enable redis
 
-# Other PHP7 Extensions
+# Other PHP5.6 Extensions
 
 
 RUN apt-get -y install libsqlite3-dev libsqlite3-0 mysql-client
@@ -34,7 +30,7 @@ RUN docker-php-ext-install curl
 RUN docker-php-ext-install tokenizer
 RUN docker-php-ext-install json
 
-RUN apt-get -y install zlib1g-dev libzip-dev
+RUN apt-get -y install zlib1g-dev
 RUN docker-php-ext-install zip
 
 RUN apt-get -y install libicu-dev
@@ -44,7 +40,6 @@ RUN apt-get -y  install openssl
 RUN docker-php-ext-install mbstring
 
 RUN apt-get -y install libssl-dev
-RUN docker-php-ext-install phar
 RUN docker-php-ext-install bcmath
 
 RUN apt-get -y install  libbz2-dev
@@ -60,10 +55,8 @@ RUN docker-php-ext-install xml
 RUN docker-php-ext-install xmlrpc
 RUN docker-php-ext-install xmlwriter
 
-RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ 
-RUN docker-php-ext-install -j$(nproc) gd
-
 
 RUN rm -rf /var/lib/apt/lists/*
+
+
 

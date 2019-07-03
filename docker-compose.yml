@@ -2,6 +2,7 @@ version: '3.0'
 services:
  web:
     image: nginx:latest
+    container_name: 'webserver'
     ports:
         - "80:80"
         - "443:443"
@@ -40,9 +41,10 @@ services:
       - "6379:6379"
     
  php:
-    image: cybersiegelab/php-fpm_7.2.x:latest
+    image: cybersiegelab/php-fpm_5.6.x:latest
     # build:
     #   context: config/php-fpm
+    container_name: 'php'
     volumes:
         - ./www:/var/www/html
     links:
