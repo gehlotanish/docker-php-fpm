@@ -6,14 +6,12 @@ services:
         - "80:80"
         - "443:443"
     volumes:
-        - ./version1:/version1:rw
-        - ./version2:/v2:rw
+        - ./www:/var/www/html:rw
         - ./config/nginx:/etc/nginx/conf.d:rw
         - ./logs/nginx:/var/log/nginx:rw
         - ./config/ssl:/etc/nginx/ssl:rw
     links:
         - php:php
-        - php2:php2
         - mysql:mysql
     restart: 'always'
  mysql:
@@ -42,17 +40,10 @@ services:
       - "6379:6379"
     
  php:
-    image: nginx-phpfpm_php:latest
+    image: cybersiegelab/php-fpm_7.2.x:latest
     # build:
     #   context: config/php-fpm
     volumes:
-        - ./version1:/version1
-    links:
-        - mysql:mysql
-
- php2:
-    image: php:7.2-fpm
-    volumes:
-        - ./version2:/v2
+        - ./www:/var/www/html
     links:
         - mysql:mysql
