@@ -65,7 +65,7 @@ To make it easy, just copy the content from `sample.env` file and update the env
 
 ## phpMyAdmin
 
-phpMyAdmin is configured to run on port 8080. Use following default credentials.
+phpMyAdmin is configured to run on port 8000. Use following default url.
 
 ```shell
 http://localhost:8000/
