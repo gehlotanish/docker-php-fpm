@@ -1,4 +1,4 @@
-FROM php:7.3-fpm
+FROM php:7.1-fpm
 
 
 RUN apt-get -y update --fix-missing
@@ -13,17 +13,14 @@ RUN apt-get -y install --fix-missing apt-utils build-essential htop git curl lib
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-
 # Install xdebug
-RUN pecl install xdebug-2.7.1
+RUN pecl install xdebug-2.5.0
 RUN docker-php-ext-enable xdebug
-
-# Install redis
-RUN pecl install redis-4.0.1
-RUN docker-php-ext-enable redis
 
 # Other PHP7 Extensions
 
+RUN apt-get -y install libmcrypt-dev
+RUN docker-php-ext-install mcrypt
 
 RUN apt-get -y install libsqlite3-dev libsqlite3-0 mysql-client
 RUN docker-php-ext-install pdo_mysql 
@@ -34,7 +31,7 @@ RUN docker-php-ext-install curl
 RUN docker-php-ext-install tokenizer
 RUN docker-php-ext-install json
 
-RUN apt-get -y install zlib1g-dev libzip-dev
+RUN apt-get -y install zlib1g-dev
 RUN docker-php-ext-install zip
 
 RUN apt-get -y install libicu-dev
