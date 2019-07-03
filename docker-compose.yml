@@ -40,8 +40,8 @@ services:
       - "6379:6379"
     
  php:
-    image: cybersiegelab/php-fpm_7.2.x:latest
-    # build:
+    image: cybersiegelab/php-fpm_7.3.x:latest
+    #build:
     #   context: config/php-fpm
     volumes:
         - ./www:/var/www/html
