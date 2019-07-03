@@ -15,7 +15,9 @@ As of now, we have 4 different branches for different PHP versions. Use appropri
 * [7.3.x](https://github.com/gehlotanish/nginx-phpfpm/tree/fpm-7.3.x)
 * [Multi-fpm](https://github.com/gehlotanish/nginx-phpfpm/tree/multi_fpm)
 
-Master baranch can execute different php-fpm version based on nginx configuration on single code in www directory.
+#Master branch 
+
+Code in www directory can execute different php-fpm version based on nginx configuration.
 
 ## Installation
 
