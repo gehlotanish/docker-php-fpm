@@ -42,7 +42,9 @@ services:
       - "6379:6379"
     
  php:
-    image: php:7-fpm
+    image: nginx-phpfpm_php:latest
+    # build:
+    #   context: config/php-fpm
     volumes:
         - ./version1:/version1
     links:
