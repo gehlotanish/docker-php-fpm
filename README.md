@@ -36,7 +36,7 @@ example.com                         example2.com
 Clone this repository on your local computer and checkout the appropriate branch e.g. 7.x.x. Run the `docker-compose up -d`.
 
 ```shell
-git clone https://github.com/gehlotanish/nginx-phpfpm.git        
+git clone https://github.com/gehlotanish/docker-php-fpm.git        
 cd docker-php/
 git fetch --all
 cd bin/ 
