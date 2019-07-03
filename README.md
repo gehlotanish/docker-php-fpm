@@ -8,7 +8,7 @@ This is a basic LEMP stack environment built using Docker Compose. It consists f
 * PhpMyAdmin
 * Redis
 
-As of now, we have 4 different branches for different PHP versions. Use appropriate branch as per your php version need:
+As of now, we have 5 different branches for different PHP-FPM versions. Use appropriate branch as per your php-fpm version need:
 * [5.6.x](https://github.com/gehlotanish/nginx-phpfpm/tree/fpm-5.6.x)
 * [7.1.x](https://github.com/gehlotanish/nginx-phpfpm/tree/fpm-7.1.x)
 * [7.2.x](https://github.com/gehlotanish/nginx-phpfpm/tree/fpm-7.2.x)
