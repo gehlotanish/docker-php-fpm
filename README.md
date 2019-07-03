@@ -22,13 +22,13 @@ Master baranch can execute different php-fpm version based on nginx configuratio
 Clone this repository on your local computer and checkout the appropriate branch e.g. 7.x.x. Run the `docker-compose up -d`.
 
 ```shell
-git clone https://github.com/gehlotanish/docker-php.git        
+git clone https://github.com/gehlotanish/nginx-phpfpm.git        
 cd docker-php/
 git fetch --all
 cd bin/ 
 bash install-docker.sh
 bash install-docker-compose.sh
-git checkout 7.x.x
+git checkout fpm-7.x.x
 docker-compose up -d
 ```
 
