@@ -1,5 +1,7 @@
 # LEMP stack built with Docker Compose
 
+![Docker + PHP-FPM](https://cloud.githubusercontent.com/assets/6241518/4104985/2f8b00cc-319d-11e4-8a91-94926172392e.jpg)
+
 This is a basic LEMP stack environment built using Docker Compose. It consists following:
 
 * PHP-FPM
@@ -19,6 +21,16 @@ As of now, we have 5 different branches for different PHP-FPM versions. Use appr
 
 Code in www directory can execute different php-fpm version based on nginx configuration.
 
+```shell
+
+example.com                         example2.com
+    |                                   |
+    |php-fpm:7.3.x                      |php-fpm:7.2.x
+    |                                   |
+     ───────────────────────────────────
+                     |
+                    www
+```
 ## Installation
 
 Clone this repository on your local computer and checkout the appropriate branch e.g. 7.x.x. Run the `docker-compose up -d`.
