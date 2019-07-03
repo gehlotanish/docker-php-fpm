@@ -2,7 +2,5 @@
 /.vscode
 /data/*
 /logs/*
-/version1/**
-/version2/**
 .DS_Store
 
