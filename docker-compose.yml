@@ -2,12 +2,12 @@ version: '3.0'
 services:
  web:
     image: nginx:latest
+    container_name: 'webserver'
     ports:
         - "80:80"
         - "443:443"
     volumes:
-        - ./version1:/version1:rw
-        - ./version2:/v2:rw
+        - ./www:/var/www/html:rw
         - ./config/nginx:/etc/nginx/conf.d:rw
         - ./logs/nginx:/var/log/nginx:rw
         - ./config/ssl:/etc/nginx/ssl:rw
@@ -42,15 +42,17 @@ services:
       - "6379:6379"
     
  php:
-    image: php:7-fpm
+    image: cybersiegelab/php-fpm_7.3.x:latest
+    container_name: 'php'
     volumes:
-        - ./version1:/version1
+        - ./www:/var/www/html
     links:
         - mysql:mysql
 
  php2:
-    image: php:7.2-fpm
+    image: cybersiegelab/php-fpm_7.2.x:latest
+    container_name: 'php2' 
     volumes:
-        - ./version2:/v2
+        - ./www:/var/www/html
     links:
         - mysql:mysql
